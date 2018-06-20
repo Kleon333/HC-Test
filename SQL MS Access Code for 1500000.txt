@@ -1,0 +1,5 @@
+SELECT O1.[Order ID], O1.[Units Sold], O1.[Unit Cost], O1.[Unit Price], O1.[Total Profit], O1.[Order Date], O1.[Ship Date]
+FROM [1500000 Sales Records] AS O1
+GROUP BY O1.[Order ID], O1.[Units Sold], O1.[Unit Cost], O1.[Unit Price], O1.[Total Profit], O1.[Order Date], O1.[Ship Date]
+HAVING (((O1.[Order Date])>=(SELECT MAX(O2.[Order Date]) FROM [1500000 Sales Records] AS O2 WHERE O1.[Order ID] = O2.[Order ID])))
+ORDER BY O1.[Order ID];
